@@ -1,6 +1,5 @@
-package blackapple.webbook.repositories;
+package blackapple.webbook.productPart;
 
-import blackapple.webbook.entities.Book;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
