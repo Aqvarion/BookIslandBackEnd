@@ -1,7 +1,7 @@
 package blackapple.webbook.userPart.repositories;
 
-import blackapple.webbook.userPart.model.ERole;
-import blackapple.webbook.userPart.model.Role;
+import blackapple.webbook.userPart.models.ERole;
+import blackapple.webbook.userPart.models.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

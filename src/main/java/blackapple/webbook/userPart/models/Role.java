@@ -1,4 +1,4 @@
-package blackapple.webbook.userPart.model;
+package blackapple.webbook.userPart.models;
 
 import javax.persistence.*;
 

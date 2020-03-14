@@ -1,6 +1,6 @@
 package blackapple.webbook.userPart.repositories;
 
-import blackapple.webbook.userPart.model.User;
+import blackapple.webbook.userPart.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

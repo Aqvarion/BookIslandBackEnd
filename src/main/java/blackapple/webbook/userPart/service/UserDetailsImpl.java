@@ -1,6 +1,6 @@
-package blackapple.webbook.service;
+package blackapple.webbook.userPart.service;
 
-import blackapple.webbook.userPart.model.User;
+import blackapple.webbook.userPart.models.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

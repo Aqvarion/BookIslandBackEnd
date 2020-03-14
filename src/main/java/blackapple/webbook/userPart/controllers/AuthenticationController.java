@@ -1,9 +1,9 @@
 package blackapple.webbook.userPart.controllers;
 
-import blackapple.webbook.service.UserDetailsImpl;
-import blackapple.webbook.userPart.model.ERole;
-import blackapple.webbook.userPart.model.Role;
-import blackapple.webbook.userPart.model.User;
+import blackapple.webbook.userPart.service.UserDetailsImpl;
+import blackapple.webbook.userPart.models.ERole;
+import blackapple.webbook.userPart.models.Role;
+import blackapple.webbook.userPart.models.User;
 import blackapple.webbook.userPart.payload.JwtResponse;
 import blackapple.webbook.userPart.payload.LoginRequest;
 import blackapple.webbook.userPart.payload.MessageResponse;
@@ -11,8 +11,6 @@ import blackapple.webbook.userPart.payload.SignUpRequest;
 import blackapple.webbook.userPart.repositories.RoleRepository;
 import blackapple.webbook.userPart.repositories.UserRepository;
 import blackapple.webbook.userPart.security.jwt.JwtUtils;
-
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,23 +32,22 @@ import java.util.stream.Collectors;
 public class AuthenticationController {
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
-    JwtUtils jwtUtils;
+    private JwtUtils jwtUtils;
 
     @PostMapping("/signUp")
     public ResponseEntity registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-        System.out.println("Происходит регистрация");
 
         // проверка на уникальность имени пользователя или почты
         if(userRepository.existsByUsername(signUpRequest.getUsername())) {
@@ -105,15 +102,13 @@ public class AuthenticationController {
 
     @PostMapping("/signIn")
     public ResponseEntity authenticateUser (@Valid @RequestBody LoginRequest loginRequest) {
-        System.out.println("Выполняется аутентификация");
-        // изучить подробней
 
+        // изучить подробней
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
-        System.out.println("Jwt: " + jwt);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()

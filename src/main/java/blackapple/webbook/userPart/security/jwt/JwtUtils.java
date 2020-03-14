@@ -1,6 +1,6 @@
 package blackapple.webbook.userPart.security.jwt;
 
-import blackapple.webbook.service.UserDetailsImpl;
+import blackapple.webbook.userPart.service.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,6 @@ public class JwtUtils {
 
     // генерируем токен
     public String generateJwtToken(Authentication authentication) {
-        System.out.println("Создаем токен");
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
         return Jwts.builder()
@@ -35,7 +34,6 @@ public class JwtUtils {
 
     // подтверждаем и проверяем токен
     public boolean validateJwtToke(String authToken) {
-        System.out.println("Проверяем токен");
         try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
@@ -52,5 +50,9 @@ public class JwtUtils {
         }
 
         return false;
+    }
+
+    public String getUserNameFromJwtToken(String token) {
+        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
     }
 }

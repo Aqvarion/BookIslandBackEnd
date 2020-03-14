@@ -1,4 +1,4 @@
-package blackapple.webbook.productPart;
+package blackapple.webbook.productPart.models;
 
 import javax.persistence.*;
 

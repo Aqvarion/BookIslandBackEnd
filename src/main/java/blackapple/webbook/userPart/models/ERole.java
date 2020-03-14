@@ -1,4 +1,4 @@
-package blackapple.webbook.userPart.model;
+package blackapple.webbook.userPart.models;
 
 public enum ERole {
     ROLE_USER,
