@@ -95,6 +95,7 @@ public class AuthenticationController {
             });
         }
 
+        // Role userRole = roleRepository.findByName(ERole.ROLE_USER)
         user.setRoles(roles);
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
