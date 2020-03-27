@@ -1,13 +1,14 @@
-package blackapple.webbook.productPart.models;
+package blackapple.webbook.productPart.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "books")
-public class Book {
+@Table(name = "book")
+public class Book implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -21,12 +22,12 @@ public class Book {
     private String author;
 
     @Column(name="price")
-    private String price;
+    private double price;
 
     public Book(){
     }
 
-    public Book(int id,String title, String genre,String author, String price) {
+    public Book(int id,String title, String genre,String author, double price) {
         this.id = id;
         this.title = title;
         this.genre = genre;
@@ -50,7 +51,7 @@ public class Book {
         return author;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 

@@ -25,6 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String loginEndpoint = "/api/auth/**";
     private static final String userEndpoint = "/api/user/**";
     private static final String bookEndpoint = "/api/book/**";
+    private static final String orderEndpoint = "/api/order/**";
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
@@ -65,6 +66,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(loginEndpoint).permitAll()
                 .antMatchers(bookEndpoint).permitAll()
+                .antMatchers(orderEndpoint).permitAll()
                 .antMatchers(userEndpoint).permitAll().anyRequest().authenticated();
 
         httpSecurity.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
