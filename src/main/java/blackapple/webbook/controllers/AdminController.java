@@ -28,3 +28,4 @@ public class AdminController {
         return userRepository.findAll();
     }
 }
+

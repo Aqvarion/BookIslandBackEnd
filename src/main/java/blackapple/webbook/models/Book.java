@@ -15,7 +15,9 @@ public class Book implements Serializable {
     @Column(name="title")
     private String title;
 
-    @Column(name="genre")
+//    @ManyToOne
+//    @JoinColumn(name = "genre")
+    @Column(name = "genre")
     private String genre;
 
     @Column(name="author")
@@ -24,15 +26,19 @@ public class Book implements Serializable {
     @Column(name="price")
     private double price;
 
+    @Column(name ="img")
+    private String img;
+
     public Book(){
     }
 
-    public Book(int id,String title, String genre,String author, double price) {
+    public Book(int id,String title, String genre, String author, double price, String img) {
         this.id = id;
         this.title = title;
         this.genre = genre;
         this.author = author;
         this.price = price;
+        this.img = img;
     }
 
     public int getId() {
@@ -55,14 +61,7 @@ public class Book implements Serializable {
         return price;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", genre='" + genre + '\'' +
-                ", author='" + author + '\'' +
-                ", price='" + price + '\'' +
-                '}';
+    public String getImg() {
+        return img;
     }
 }
